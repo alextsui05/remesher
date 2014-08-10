@@ -1,5 +1,5 @@
-A software for isotropic surface remeshing.
-Written by Simon Fuhrmann.
+A software for isotropic surface remeshing written by Simon Fuhrmann.
+Original project page can be found [here](http://www.gris.informatik.tu-darmstadt.de/~sfuhrman/remesher.html).
 
 CMake build system introduced by Alex Tsui.
 
