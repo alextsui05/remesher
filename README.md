@@ -1,6 +1,8 @@
 A software for isotropic surface remeshing.
 Written by Simon Fuhrmann.
 
+CMake build system introduced by Alex Tsui.
+
 Note that the code is distributed under the GPL license. This means
 that you are neither allowed to use the code or parts of the code in
 non-GPL applications, nor link the libraries against non-GPL binaries.
@@ -33,8 +35,12 @@ These system libraries, typically available in your distro, are:
 COMPILING
 ----------------------------------------------------------------------
 
-Execute "make" in the source tree root to compile the GUI application.
-Execute "make" in "cmdremesher" to only compile the command line app.
+This version of the project uses a CMake build system.
+
+    mkdir build
+    cd build
+    cmake ..
+    make
 
 The resulting binaries are in the "gtkremesher" and "cmdremesher"
 directories after successful compilation.
