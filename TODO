@@ -1,0 +1,56 @@
+- Remesher
+  - Fix patches with complex growing (one of the major issues)
+
+- Algorithm chain
+  - Is a nice idea but to intensive to implement! Will not implement.
+  - Some algorithm steps here:
+
+  - Loading mesh
+    - Requires: Nothing
+    - Provides: Reference mesh
+
+  - Cleaning mesh [Optional]
+    - Requires: Reference mesh
+    - Provides: Reference mesh
+
+  - Reference Mesh Vertex information
+    - Requires: Reference mesh
+    - Provides: Ref mesh Vertex information
+
+  - Feature detection (TODO) [Optional]
+    - Requires: Reference mesh
+    - Provides: Feature information
+
+  - Density field [Optional]
+    - Requires: Reference mesh, Ref mesh vertex info
+    - Provides: Density information
+
+  - Mesh adaptation to requested amount of vertices
+
+      - Copy reference mesh (Does not change vertex amount)
+        - Requires: Reference mesh
+        - Provides: Evolving mesh, Vertex references
+
+      - Mesh simplification (Reduces the vertex amount)
+        - Requires: Reference mesh
+        - Provides: Evolving mesh, Vertex references
+        - Accepts: Features (TODO), Density field
+
+      - Mesh oversampling (Increases the vertex amount) (TODO)
+        - Requires: Reference mesh, Ref mesh vertex info
+        - Provides: Evolving mesh, Vertex references
+        - Accepts: Features (TODO), Density field
+
+  - Face and vertex reordering (for efficient caching) (TODO) [Optional]
+    - Requires: Evolving mesh, Evolving mesh vertex info
+    - Provides: Evolving mesh
+
+  - Lloyd relaxation [Optional]
+    - Requires: Reference mesh, Evolving mesh, Vertex references
+    - Provides: Evolving mesh, Vertex references
+    - Accepts: Features (TODO), Density field (TODO)
+
+      - Restore Delanay property
+        - Requires: Evolving mesh
+        - Provides: Evolving mesh
+        - Accepts: Features (TODO)

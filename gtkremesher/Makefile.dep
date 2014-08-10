@@ -1,0 +1,99 @@
+main.o: main.cc arguments.h imagestore.h maingui.h \
+ ../libremesh/interface.h ../libremesh/defines.h \
+ ../libremesh/vertexinfo.h ../libremesh/refptrarray.h \
+ ../libremesh/refptr.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h ../libremesh/trianglemesh.h \
+ ../libremesh/vec3.h ../libremesh/vertexref.h ../libremesh/vec2.h \
+ ../libremesh/simplification.h ../libremesh/plane.h \
+ ../libremesh/densityfield.h ../libremesh/featureedges.h \
+ ../libremesh/oversampling.h ../libremesh/resampling.h \
+ ../libremesh/meshskeleton.h ../libremesh/meshdecimation.h \
+ ../libremesh/meshcleanup.h ../libremesh/relaxlloyd.h \
+ ../libremesh/microdelaunay.h ../libremesh/polygon2.h \
+ ../libremesh/micropatch.h ../libremesh/relaxation.h \
+ ../libremesh/relocation.h ../libremesh/triangle2.h \
+ ../libremesh/matrix2.h ../libremesh/patchcache.h ../libremesh/patch2d.h \
+ ../libremesh/patch3d.h ../libremesh/relaxarea.h \
+ ../libglstuff/gltrianglemesh.h ../libremesh/refptr.h ../libremesh/vec4.h \
+ ../libremesh/trianglemesh.h ../libglstuff/gldrawable.h \
+ ../libglstuff/cameracontrol.h ../libglstuff/gltriangledebug.h \
+ ../libglstuff/fonttexture.h ../libglstuff/glfeatureedges.h \
+ ../libremesh/featureedges.h ../libremesh/meshskeleton.h \
+ ../libglstuff/glskybox.h ../libglstuff/texture.h gtkmeshrendering.h \
+ gtkcomboboxcheck.h gtkconfig.h ../libremesh/oversampling.h \
+ ../libremesh/densityfield.h ../libremesh/simplification.h \
+ ../libremesh/relaxlloyd.h ../libremesh/resampling.h gtkwidgets.h \
+ gtkopengl.h ../libglstuff/cameracontrol.h ../libglstuff/gldrawable.h
+maingui.o: maingui.cc ../libremesh/modelwriter.h ../libremesh/defines.h \
+ ../libremesh/trianglemesh.h ../libremesh/refptr.h \
+ ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h ../libremesh/vec3.h ../libremesh/exception.h \
+ ../libremesh/meshstats.h ../libremesh/vertexinfo.h \
+ ../libremesh/refptrarray.h ../libremesh/helpers.h \
+ ../libremesh/cvtstats.h ../libremesh/densityfield.h ../libremesh/vec2.h \
+ ../libremesh/featureedges.h ../libremesh/vertexref.h \
+ ../libremesh/delaunayflips.h ../libremesh/edgeflips.h \
+ ../libremesh/densityfield.h ../libglstuff/camerasimple.h \
+ ../libglstuff/cameracontrol.h ../libremesh/refptr.h \
+ ../libglstuff/cameratrackball.h ../libremesh/vec3.h \
+ ../libglstuff/glfrustarenderer.h ../libglstuff/gldrawable.h imagestore.h \
+ guiglinfo.h winbase.h arguments.h gtkdefines.h maingui.h \
+ ../libremesh/interface.h ../libremesh/simplification.h \
+ ../libremesh/plane.h ../libremesh/oversampling.h \
+ ../libremesh/resampling.h ../libremesh/meshskeleton.h \
+ ../libremesh/meshdecimation.h ../libremesh/meshcleanup.h \
+ ../libremesh/relaxlloyd.h ../libremesh/microdelaunay.h \
+ ../libremesh/polygon2.h ../libremesh/micropatch.h \
+ ../libremesh/relaxation.h ../libremesh/relocation.h \
+ ../libremesh/triangle2.h ../libremesh/matrix2.h \
+ ../libremesh/patchcache.h ../libremesh/patch2d.h ../libremesh/patch3d.h \
+ ../libremesh/relaxarea.h ../libglstuff/gltrianglemesh.h \
+ ../libremesh/vec4.h ../libremesh/trianglemesh.h \
+ ../libglstuff/gltriangledebug.h ../libglstuff/fonttexture.h \
+ ../libglstuff/glfeatureedges.h ../libremesh/featureedges.h \
+ ../libremesh/meshskeleton.h ../libglstuff/glskybox.h \
+ ../libglstuff/texture.h gtkmeshrendering.h gtkcomboboxcheck.h \
+ gtkconfig.h ../libremesh/oversampling.h ../libremesh/simplification.h \
+ ../libremesh/relaxlloyd.h ../libremesh/resampling.h gtkwidgets.h \
+ gtkopengl.h ../libglstuff/cameracontrol.h ../libglstuff/gldrawable.h
+gtkopengl.o: gtkopengl.cc ../libglstuff/camerasimple.h \
+ ../libglstuff/cameracontrol.h ../libremesh/refptr.h \
+ ../libremesh/defines.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h ../libglstuff/cameratrackball.h \
+ ../libremesh/vec3.h ../libglstuff/camerarotate.h gtkopengl.h \
+ ../libglstuff/cameracontrol.h ../libglstuff/gldrawable.h
+arguments.o: arguments.cc arguments.h
+gtkconfig.o: gtkconfig.cc ../libremesh/defines.h ../libremesh/helpers.h \
+ ../libremesh/defines.h gtkdefines.h gtkconfig.h \
+ ../libremesh/oversampling.h ../libremesh/trianglemesh.h \
+ ../libremesh/refptr.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h ../libremesh/vec3.h \
+ ../libremesh/densityfield.h ../libremesh/refptrarray.h \
+ ../libremesh/vec2.h ../libremesh/vertexinfo.h \
+ ../libremesh/featureedges.h ../libremesh/vertexref.h \
+ ../libremesh/densityfield.h ../libremesh/simplification.h \
+ ../libremesh/plane.h ../libremesh/featureedges.h \
+ ../libremesh/relaxlloyd.h ../libremesh/microdelaunay.h \
+ ../libremesh/polygon2.h ../libremesh/micropatch.h \
+ ../libremesh/relaxation.h ../libremesh/relocation.h \
+ ../libremesh/triangle2.h ../libremesh/matrix2.h \
+ ../libremesh/patchcache.h ../libremesh/patch2d.h ../libremesh/patch3d.h \
+ ../libremesh/resampling.h ../libremesh/meshskeleton.h \
+ ../libremesh/meshdecimation.h ../libremesh/meshcleanup.h gtkwidgets.h
+guiglinfo.o: guiglinfo.cc ../libremesh/helpers.h ../libremesh/defines.h \
+ gtkdefines.h guiglinfo.h winbase.h
+imagestore.o: imagestore.cc images/cam_simple.h images/cam_trackball.h \
+ images/invert_faces.h images/scale_center.h images/lookat.h \
+ images/meshinfo.h imagestore.h
+gtkmeshrendering.o: gtkmeshrendering.cc gtkdefines.h gtkmeshrendering.h \
+ ../libglstuff/glfeatureedges.h ../libremesh/vec4.h \
+ ../libremesh/defines.h ../libremesh/refptr.h ../libremesh/refptr_mt.h \
+ ../libremesh/thread.h ../libremesh/thread_posix.h \
+ ../libremesh/trianglemesh.h ../libremesh/refptr.h ../libremesh/vec3.h \
+ ../libremesh/featureedges.h ../libremesh/refptrarray.h \
+ ../libremesh/vertexinfo.h ../libremesh/trianglemesh.h \
+ ../libglstuff/gldrawable.h ../libglstuff/cameracontrol.h \
+ ../libremesh/meshskeleton.h ../libremesh/featureedges.h \
+ ../libglstuff/gltrianglemesh.h ../libglstuff/gltriangledebug.h \
+ ../libglstuff/fonttexture.h gtkcomboboxcheck.h
+gtkcomboboxcheck.o: gtkcomboboxcheck.cc gtkcomboboxcheck.h

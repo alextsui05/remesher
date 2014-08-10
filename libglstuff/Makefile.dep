@@ -1,0 +1,54 @@
+gltrianglemesh.o: gltrianglemesh.cc ../libremesh/vertexinfo.h \
+ ../libremesh/defines.h ../libremesh/refptrarray.h ../libremesh/refptr.h \
+ ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h ../libremesh/trianglemesh.h \
+ ../libremesh/vec3.h ../libremesh/triangle3.h ../libremesh/vec2.h \
+ gltrianglemesh.h ../libremesh/refptr.h ../libremesh/vec4.h \
+ ../libremesh/trianglemesh.h gldrawable.h cameracontrol.h
+gltestscene.o: gltestscene.cc ../libremesh/averageplane.h \
+ ../libremesh/vec3.h ../libremesh/defines.h ../libremesh/plane.h \
+ gltestscene.h ../libremesh/vec3.h ../libremesh/plane.h gldrawable.h \
+ ../libremesh/refptr.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h cameracontrol.h
+glskybox.o: glskybox.cc fonttexture.h ../libremesh/refptr.h \
+ ../libremesh/defines.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h glskybox.h texture.h gldrawable.h \
+ cameracontrol.h
+gltriangledebug.o: gltriangledebug.cc ../libremesh/exception.h \
+ ../libremesh/defines.h ../libremesh/helpers.h gltriangledebug.h \
+ ../libremesh/refptr.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h ../libremesh/trianglemesh.h \
+ ../libremesh/refptr.h ../libremesh/vec3.h gldrawable.h cameracontrol.h \
+ fonttexture.h
+glfeatureedges.o: glfeatureedges.cc glfeatureedges.h ../libremesh/vec4.h \
+ ../libremesh/defines.h ../libremesh/refptr.h ../libremesh/refptr_mt.h \
+ ../libremesh/thread.h ../libremesh/thread_posix.h \
+ ../libremesh/trianglemesh.h ../libremesh/refptr.h ../libremesh/vec3.h \
+ ../libremesh/featureedges.h ../libremesh/refptrarray.h \
+ ../libremesh/vertexinfo.h ../libremesh/trianglemesh.h gldrawable.h \
+ cameracontrol.h ../libremesh/meshskeleton.h ../libremesh/featureedges.h
+glfrustarenderer.o: glfrustarenderer.cc ../libremesh/matrix3.h \
+ ../libremesh/defines.h ../libremesh/vec3.h ../libremesh/helpers.h \
+ glfrustarenderer.h ../libremesh/vec3.h ../libremesh/refptr.h \
+ ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h gldrawable.h cameracontrol.h
+cameracontrol.o: cameracontrol.cc cameracontrol.h ../libremesh/refptr.h \
+ ../libremesh/defines.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h
+camerasimple.o: camerasimple.cc camerasimple.h cameracontrol.h \
+ ../libremesh/refptr.h ../libremesh/defines.h ../libremesh/refptr_mt.h \
+ ../libremesh/thread.h ../libremesh/thread_posix.h
+cameratrackball.o: cameratrackball.cc ../libremesh/vec4.h \
+ ../libremesh/defines.h ../libremesh/quaternion.h ../libremesh/defines.h \
+ cameratrackball.h ../libremesh/vec3.h cameracontrol.h \
+ ../libremesh/refptr.h ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h
+camerarotate.o: camerarotate.cc camerarotate.h ../libremesh/vec3.h \
+ ../libremesh/defines.h cameracontrol.h ../libremesh/refptr.h \
+ ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h
+fonttexture.o: fonttexture.cc ../libremesh/exception.h \
+ ../libremesh/defines.h consolefont.h fonttexture.h ../libremesh/refptr.h \
+ ../libremesh/refptr_mt.h ../libremesh/thread.h \
+ ../libremesh/thread_posix.h
+texture.o: texture.cc gldefines.h texture.h
