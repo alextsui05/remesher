@@ -3,8 +3,8 @@
 
 #if AVG_PLANE_USE_GMM
 #   define GETFEM_PARA_LEVEL 0
-#   include "libgmm/gmm_matrix.h"
-#   include "libgmm/gmm_dense_qr.h"
+#   include "gmm/gmm_matrix.h"
+#   include "gmm/gmm_dense_qr.h"
 #else
 #   include <gsl/gsl_matrix.h>
 #   include <gsl/gsl_vector.h>

@@ -4,9 +4,9 @@
 #include <stack>
 
 #define GETFEM_PARA_LEVEL 0
-#include "libgmm/gmm_dense_Householder.h"
-#include "libgmm/gmm_matrix.h"
-#include "libgmm/gmm_iter_solvers.h"
+#include "gmm/gmm_dense_Householder.h"
+#include "gmm/gmm_matrix.h"
+#include "gmm/gmm_iter_solvers.h"
 //#include "libnl/nl.h"
 
 #include "elapsedtimer.h"
