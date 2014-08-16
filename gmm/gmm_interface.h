@@ -95,8 +95,8 @@ namespace gmm {
     porigin_type origin;
     size_type size_;
 
-    simple_vector_ref(ref_V v) : begin_(vect_begin(const_cast<V&>(v))), 
-				 end_(vect_end(const_cast<V&>(v))), 
+    simple_vector_ref(ref_V v) : begin_(vect_begin(const_cast<V&>(v))),
+				 end_(vect_end(const_cast<V&>(v))),
 				 origin(linalg_origin(const_cast<V&>(v))),
 				 size_(vect_size(v)) {}
 
@@ -158,7 +158,7 @@ namespace gmm {
     static size_type size(const this_type &v) { return v.size_; }
     static inline iterator begin(this_type &v) {
       iterator it = v.begin_;
-      set_to_begin(it, v.origin, pthis_type(), is_reference()); 
+      set_to_begin(it, v.origin, pthis_type(), is_reference());
       return it;
     }
     static inline const_iterator begin(const this_type &v) {
@@ -254,16 +254,16 @@ namespace gmm {
     typedef typename std::iterator_traits<IT>::pointer PT;
     typedef typename select_ref<const origin_type *, origin_type *,
 				PT>::ref_type porigin_type;
-   
+
 
     porigin_type origin;
-   
+
     tab_ref_with_origin(void) {}
     template <class PT> tab_ref_with_origin(const IT &b, const IT &e, PT p)
       : gmm::tab_ref<IT>(b,e), origin(porigin_type(p)) {}
     tab_ref_with_origin(const IT &b, const IT &e, porigin_type p)
       : gmm::tab_ref<IT>(b,e), origin(p) {}
-   
+
     tab_ref_with_origin(const V &v, const sub_interval &si)
       : gmm::tab_ref<IT>(vect_begin(const_cast<V&>(v))+si.min,
 			 vect_begin(const_cast<V&>(v))+si.max),
@@ -303,7 +303,7 @@ namespace gmm {
     static value_type access(const origin_type *, const const_iterator &it,
 			     const const_iterator &, size_type i)
     { return it[i]; }
-    static reference access(origin_type *, const iterator &it, 
+    static reference access(origin_type *, const iterator &it,
 			    const iterator &, size_type i)
     { return it[i]; }
   };
@@ -319,13 +319,13 @@ namespace gmm {
     typedef typename linalg_traits<this_type>::porigin_type porigin_type;
 
     porigin_type origin;
-    
+
     tab_ref_reg_spaced_with_origin(void) {}
     tab_ref_reg_spaced_with_origin(const IT &b, size_type n, size_type s,
 				   const porigin_type p)
       : gmm::tab_ref_reg_spaced<IT>(b,n,s), origin(p) {}
     tab_ref_reg_spaced_with_origin(const V &v, const sub_slice &si)
-      : gmm::tab_ref_reg_spaced<IT>(vect_begin(const_cast<V&>(v)) + si.min, 
+      : gmm::tab_ref_reg_spaced<IT>(vect_begin(const_cast<V&>(v)) + si.min,
 				    si.N, (si.max - si.min)/si.N),
       origin(linalg_origin(const_cast<V&>(v))) {}
     tab_ref_reg_spaced_with_origin(V &v, const sub_slice &si)
@@ -334,7 +334,7 @@ namespace gmm {
 	origin(linalg_origin(const_cast<V&>(v))) {}
   };
 
-  template <typename IT, typename V> 
+  template <typename IT, typename V>
   struct linalg_traits<tab_ref_reg_spaced_with_origin<IT, V> > {
     typedef typename std::iterator_traits<IT>::pointer PT;
     typedef tab_ref_reg_spaced_with_origin<IT, V> this_type;
@@ -363,18 +363,18 @@ namespace gmm {
     static value_type access(const origin_type *, const const_iterator &it,
 			     const const_iterator &, size_type i)
     { return it[i]; }
-    static reference access(origin_type *, const iterator &it, 
+    static reference access(origin_type *, const iterator &it,
 			    const iterator &, size_type i)
     { return it[i]; }
   };
-  
+
   template <typename IT, typename V> std::ostream &operator <<
   (std::ostream &o, const tab_ref_reg_spaced_with_origin<IT, V>& m)
   { gmm::write(o,m); return o; }
 
 
   template <typename IT, typename ITINDEX, typename V>
-  struct tab_ref_index_ref_with_origin 
+  struct tab_ref_index_ref_with_origin
     : public gmm::tab_ref_index_ref<IT, ITINDEX> {
     typedef tab_ref_index_ref_with_origin<IT, ITINDEX, V> this_type;
     typedef typename linalg_traits<this_type>::porigin_type porigin_type;
@@ -436,7 +436,7 @@ namespace gmm {
   { gmm::write(o,m); return o; }
 
 
-  template<typename ITER, typename MIT, typename PT> 
+  template<typename ITER, typename MIT, typename PT>
   struct dense_compressed_iterator {
     typedef ITER value_type;
     typedef ITER *pointer;
@@ -450,14 +450,14 @@ namespace gmm {
     ITER it;
     size_type N, nrows, ncols, i;
     PT origin;
-    
+
     iterator operator ++(int) { iterator tmp = *this; i++; return tmp; }
     iterator operator --(int) { iterator tmp = *this; i--; return tmp; }
     iterator &operator ++()   { ++i; return *this; }
     iterator &operator --()   { --i; return *this; }
     iterator &operator +=(difference_type ii) { i += ii; return *this; }
     iterator &operator -=(difference_type ii) { i -= ii; return *this; }
-    iterator operator +(difference_type ii) const 
+    iterator operator +(difference_type ii) const
     { iterator itt = *this; return (itt += ii); }
     iterator operator -(difference_type ii) const
     { iterator itt = *this; return (itt -= ii); }
@@ -480,7 +480,7 @@ namespace gmm {
     dense_compressed_iterator(const ITER &iter, size_type n, size_type r,
 			      size_type c, size_type ii, PT o)
       : it(iter), N(n), nrows(r), ncols(c), i(ii), origin(o) { }
-    
+
   };
 
   /* ******************************************************************** */
@@ -499,7 +499,7 @@ namespace gmm {
     typedef ptrdiff_t     difference_type;
     typedef std::bidirectional_iterator_tag iterator_category;
     typedef cs_vector_ref_iterator<PT1, PT2, shift> iterator;
-    
+
     cs_vector_ref_iterator(void) {}
     cs_vector_ref_iterator(PT1 p1, PT2 p2) : pr(p1), ir(p2) {}
 
@@ -508,14 +508,14 @@ namespace gmm {
     iterator operator ++(int) { iterator tmp = *this; ++(*this); return tmp; }
     iterator &operator --() { --pr; --ir; return *this; }
     iterator operator --(int) { iterator tmp = *this; --(*this); return tmp; }
-    
+
     reference operator  *() const { return *pr; }
     pointer   operator ->() const { return pr; }
-    
+
     bool operator ==(const iterator &i) const { return (i.pr==pr);}
     bool operator !=(const iterator &i) const { return (i.pr!=pr);}
   };
-    
+
   template <typename PT1, typename PT2, int shift = 0> struct cs_vector_ref {
     PT1 pr;
     PT2 ir;
@@ -530,10 +530,10 @@ namespace gmm {
     cs_vector_ref(void) {}
 
     size_type size(void) const { return size_; }
-    
+
     const_iterator begin(void) const { return const_iterator(pr, ir); }
     const_iterator end(void) const { return const_iterator(pr+n, ir+n); }
-    
+
     value_type operator[](size_type i) const
     { return linalg_traits<this_type>::access(pr, begin(), end(),i); }
   };
@@ -592,14 +592,14 @@ namespace gmm {
     PT3 jc;
     size_type n;
     const value_type *origin;
-    
+
     iterator operator ++(int) { iterator tmp = *this; jc++; return tmp; }
     iterator operator --(int) { iterator tmp = *this; jc--; return tmp; }
     iterator &operator ++()   { jc++; return *this; }
     iterator &operator --()   { jc--; return *this; }
     iterator &operator +=(difference_type i) { jc += i; return *this; }
     iterator &operator -=(difference_type i) { jc -= i; return *this; }
-    iterator operator +(difference_type i) const 
+    iterator operator +(difference_type i) const
     { iterator itt = *this; return (itt += i); }
     iterator operator -(difference_type i) const
     { iterator itt = *this; return (itt -= i); }
@@ -616,7 +616,7 @@ namespace gmm {
     sparse_compressed_iterator(PT1 p1, PT2 p2, PT3 p3, size_type nn,
 			       const value_type *o)
       : pr(p1), ir(p2), jc(p3), n(nn), origin(o) { }
-    
+
   };
 
   template <typename PT1, typename PT2, typename PT3, int shift = 0>
@@ -625,15 +625,15 @@ namespace gmm {
     PT2 ir; // row indexes.
     PT3 jc; // column repartition on pr and ir.
     size_type nc, nr;
-    
+
     typedef typename std::iterator_traits<PT1>::value_type value_type;
     csc_matrix_ref(PT1 pt1, PT2 pt2, PT3 pt3, size_type nrr, size_type ncc)
       : pr(pt1), ir(pt2), jc(pt3), nc(ncc), nr(nrr) {}
     csc_matrix_ref(void) {}
-    
+
     size_type nrows(void) const { return nr; }
     size_type ncols(void) const { return nc; }
-   
+
     value_type operator()(size_type i, size_type j) const
       { return mat_col(*this, j)[i]; }
   };
@@ -692,19 +692,19 @@ namespace gmm {
     PT2 ir; // column indexes.
     PT3 jc; // row repartition on pr and ir.
     size_type nc, nr;
-    
+
     typedef typename std::iterator_traits<PT1>::value_type value_type;
     csr_matrix_ref(PT1 pt1, PT2 pt2, PT3 pt3, size_type nrr, size_type ncc)
       : pr(pt1), ir(pt2), jc(pt3), nc(ncc), nr(nrr) {}
     csr_matrix_ref(void) {}
-    
+
     size_type nrows(void) const { return nr; }
     size_type ncols(void) const { return nc; }
-   
+
     value_type operator()(size_type i, size_type j) const
       { return mat_col(*this, i)[j]; }
   };
-  
+
   template <typename PT1, typename PT2, typename PT3, int shift>
   struct linalg_traits<csr_matrix_ref<PT1, PT2, PT3, shift> > {
     typedef csr_matrix_ref<PT1, PT2, PT3, shift> this_type;
@@ -760,7 +760,7 @@ namespace gmm {
     typedef typename std::iterator_traits<PT>::value_type value_type;
 
     PT begin, end;
-    
+
     const value_type &operator[](size_type i) const { return *(begin+i); }
     value_type &operator[](size_type i) { return *(begin+i); }
 
@@ -803,7 +803,7 @@ namespace gmm {
   template<typename PT> std::ostream &operator <<
   (std::ostream &o, const array1D_reference<PT>& v)
   { gmm::write(o,v); return o; }
-  
+
   template <class PT> struct array2D_col_reference {
 
     typedef typename std::iterator_traits<PT>::value_type T;
@@ -811,7 +811,7 @@ namespace gmm {
     typedef typename const_reference<reference>::reference const_reference;
     typedef PT iterator;
     typedef typename const_pointer<PT>::pointer const_iterator;
-    
+
     PT begin_;
     size_type nbl, nbc;
 
@@ -823,16 +823,16 @@ namespace gmm {
       GMM_ASSERT2(l < nbl && c < nbc, "out of range");
       return *(begin_ + c*nbl+l);
     }
-    
+
     void resize(size_type, size_type);
     void reshape(size_type m, size_type n) {
       GMM_ASSERT2(n*m == nbl*nbc, "dimensions mismatch");
       nbl = m; nbc = n;
     }
-    
-    void fill(T a, T b = T(0)) { 
-      std::fill(begin_, end+nbc*nbl, b);
-      iterator p = begin_, e = end+nbc*nbl;
+
+    void fill(T a, T b = T(0)) {
+      std::fill(begin_, end()+nbc*nbl, b);
+      iterator p = begin_, e = end()+nbc*nbl;
       while (p < e) { *p = a; p += nbl+1; }
     }
     inline size_type nrows(void) const { return nbl; }
@@ -865,7 +865,7 @@ namespace gmm {
     typedef dense_compressed_iterator<typename this_type::const_iterator,
 				      typename this_type::iterator,
 				      const this_type *> const_row_iterator;
-    typedef tab_ref_with_origin<typename this_type::iterator, 
+    typedef tab_ref_with_origin<typename this_type::iterator,
 				this_type> sub_col_type;
     typedef tab_ref_with_origin<typename this_type::const_iterator,
 				this_type> const_sub_col_type;
@@ -931,13 +931,13 @@ namespace gmm {
 
 
   template <class PT> struct array2D_row_reference {
-    
+
     typedef typename std::iterator_traits<PT>::value_type T;
     typedef typename std::iterator_traits<PT>::reference reference;
     typedef typename const_reference<reference>::reference const_reference;
     typedef PT iterator;
     typedef typename const_pointer<PT>::pointer const_iterator;
-    
+
     PT begin_;
     size_type nbl, nbc;
 
@@ -949,16 +949,16 @@ namespace gmm {
       GMM_ASSERT2(l < nbl && c < nbc, "out of range");
       return *(begin_ + l*nbc+c);
     }
-    
+
     void resize(size_type, size_type);
     void reshape(size_type m, size_type n) {
       GMM_ASSERT2(n*m == nbl*nbc, "dimensions mismatch");
       nbl = m; nbc = n;
     }
-    
-    void fill(T a, T b = T(0)) { 
-      std::fill(begin_, end+nbc*nbl, b);
-      iterator p = begin_, e = end+nbc*nbl;
+
+    void fill(T a, T b = T(0)) {
+      std::fill(begin_, end()+nbc*nbl, b);
+      iterator p = begin_, e = end()+nbc*nbl;
       while (p < e) { *p = a; p += nbc+1; }
     }
     inline size_type nrows(void) const { return nbl; }
@@ -991,7 +991,7 @@ namespace gmm {
     typedef dense_compressed_iterator<typename this_type::const_iterator,
 				      typename this_type::iterator,
 				      const this_type *> const_col_iterator;
-    typedef tab_ref_with_origin<typename this_type::iterator, 
+    typedef tab_ref_with_origin<typename this_type::iterator,
 				this_type> sub_row_type;
     typedef tab_ref_with_origin<typename this_type::const_iterator,
 				this_type> const_sub_row_type;

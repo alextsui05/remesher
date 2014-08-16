@@ -24,16 +24,23 @@ endif ( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
 #if ( APPLE )
 #    option( BUILD_OSX_BUNDLE "Build OSX bundle" OFF )
 #endif( )
+option(BUILD_GTK_REMESHER "Build GUI application" OFF )
 
 # Define necessary packages
 # sudo apt-get install libgmm++-dev
 find_package( OpenGL REQUIRED )
+message(STATUS ${OPENGL_INCLUDE_DIR})
+
 find_package( Threads REQUIRED )
 find_package( GMM REQUIRED )
 
+include_directories( ${GMM_INCLUDE_DIR} )
+
+if (BUILD_GTK_REMESHER)
 # sudo apt-get install libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev
-find_package( GTK2 2.4 REQUIRED gtk gtkmm )
-find_package( GTKGLEXTMM REQUIRED )
+    find_package( GTK2 2.4 REQUIRED gtk gtkmm )
+    find_package( GTKGLEXTMM REQUIRED )
+endif()
 
 #find_package( CGAL REQUIRED )
 #include( ${CGAL_USE_FILE} )
@@ -49,7 +56,9 @@ find_package( GTKGLEXTMM REQUIRED )
 add_subdirectory( libremesh )
 add_subdirectory( libglstuff )
 add_subdirectory( cmdremesher )
-add_subdirectory( gtkremesher )
+if (BUILD_GTK_REMESHER)
+    add_subdirectory( gtkremesher )
+endif()
 
 #install( TARGETS test
 #    RUNTIME DESTINATION bin 

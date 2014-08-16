@@ -1,7 +1,12 @@
 #ifndef GLSTUFF_FONT_TEXTURE_HEADER
 #define GLSTUFF_FONT_TEXTURE_HEADER
 
+#if defined(__APPLE__) && defined(__MACH__)
+#include <OpenGL/gl.h>
+#else
 #include <GL/gl.h>
+#endif
+
 #include <string>
 #include "libremesh/refptr.h"
 
