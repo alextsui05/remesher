@@ -25,6 +25,7 @@ endif ( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
 #    option( BUILD_OSX_BUNDLE "Build OSX bundle" OFF )
 #endif( )
 option(BUILD_GTK_REMESHER "Build GUI application" OFF )
+option(BUILD_CGAL_MODULE "Build CGAL mesh module" OFF )
 
 # Define necessary packages
 # sudo apt-get install libgmm++-dev
@@ -40,6 +41,11 @@ if (BUILD_GTK_REMESHER)
 # sudo apt-get install libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev
     find_package( GTK2 2.4 REQUIRED gtk gtkmm )
     find_package( GTKGLEXTMM REQUIRED )
+endif()
+
+if (BUILD_CGAL_MODULE)
+    find_package( CGAL REQUIRED )
+    include(${CGAL_USE_FILE})
 endif()
 
 #find_package( CGAL REQUIRED )
@@ -58,6 +64,9 @@ add_subdirectory( libglstuff )
 add_subdirectory( cmdremesher )
 if (BUILD_GTK_REMESHER)
     add_subdirectory( gtkremesher )
+endif()
+if (BUILD_CGAL_MODULE)
+    add_subdirectory( cgal )
 endif()
 
 #install( TARGETS test
