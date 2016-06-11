@@ -7,8 +7,9 @@
 #include "libremesh/defines.h"
 #include "libremesh/hrtimer.h"
 #include "libremesh/interface.h"
+#include "libremesh/featureedges.h"
 
-#if 1
+#if 0
 /* Beethoven settings */
 # define MESH_VERTS 500000
 # define LLOYD_ITER 100
@@ -18,7 +19,7 @@
 # define DENSITY_SMOOTH_ITER 50
 #endif
 
-#if 0
+#if 1
 /* Bunny settings. */
 # define MESH_VERTS 20000
 # define LLOYD_ITER 100
@@ -77,6 +78,30 @@ main (int argc, char** argv)
         Remesher::HRTimer t_density;
         iface.exec_density_calculation();
         density_time = t_density.get_elapsed();
+    }
+
+    // Feature edges
+    {
+        //Remesher::FeatureEdgesPtr features = Remesher::FeatureEdges::create( );
+        //features->set_mesh( iface.get_reference_mesh( ) );
+        //features->add_border_edges( );
+        //for ( int i = 0; i < features->size( ); ++i ) {
+        //    for ( int j = 0; j < features->at(i).size( ); ++j ) {
+        //        std::cout << i << " " << features->at(i)[j] << std::endl;
+        //    }
+        //}
+        Remesher::FeatureEdgesConf features_conf;
+        features_conf.border_edges = true;
+        iface.set_feature_edges_conf( features_conf );
+        iface.exec_feature_extraction( );
+
+        Remesher::FeatureEdgesPtr features = iface.get_reference_features( );
+        std::cout << "Features: " << std::endl;
+        for ( int i = 0; i < features->size( ); ++i ) {
+            for ( int j = 0; j < features->at(i).size( ); ++j ) {
+                std::cout << i << " " << features->at(i)[j] << std::endl;
+            }
+        }
     }
 
     // Resampling

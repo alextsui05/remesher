@@ -328,8 +328,24 @@ ResamplingSampler::sample_backbone (MeshBackbone const& mb,
         excess_teleport, samples);
 
     samples -= sampled;
-    if (samples == 0)
+    if (samples == 0) {
+        std::cout << "end sampling backbone" << std::endl;
+      //if (i != mb.verts.end()) {
+      //  int steps = 0;
+      //  while (i != mb.verts.end()) {
+      //      ++steps;
+      //      ip1 = ++BackboneIter(i);
+      //      if (ip1 == mb.verts.end() ||
+      //              ++BackboneIter(ip1) == mp.verts.end())
+      //          break;
+      //      this->sample_edge(*i, *ip1, density_spacing,
+      //          excess_teleport, 100);
+      //      ++i;
+      //  }
+      //  std::cout << "ended " << steps << " steps early..." << std::endl;
+      //}
       return;    
+    }
   }
 }
 

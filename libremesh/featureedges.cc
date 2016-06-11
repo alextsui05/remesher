@@ -1,6 +1,8 @@
 #include <map>
+#include <set>
 #include <algorithm>
 #include <iostream>
+#include <utility>
 
 #include "exception.h"
 #include "matrix3.h"
@@ -207,6 +209,32 @@ FeatureEdges::add_feature_edge (std::size_t index1, std::size_t index2)
     std::swap(index1, index2);
 
   this->at(index1).push_back(index2);
+}
+/* ---------------------------------------------------------------- */
+
+void FeatureEdges::add_border_edges ()
+{
+  typedef std::pair<unsigned int, unsigned int> IdPair;
+  std::map< IdPair, int > seen;
+  MeshFaceList& faces = mesh->get_faces();
+  unsigned int num_faces = faces.size() / 3;
+  for (unsigned int i = 0; i < num_faces; ++i) {
+    for (unsigned int j = 0; j < 3; ++j) {
+      unsigned int id1 = faces[3*i + j];
+      unsigned int id2 = faces[3*i + ((j + 1) % 3)];
+      if ( id1 > id2 )
+        std::swap( id1, id2 );
+      seen[ IdPair( id1, id2 ) ]++;
+    }
+  }
+
+  this->clear();
+  this->resize(this->mesh->get_vertices().size());
+  for ( std::map< IdPair, int >::iterator it = seen.begin( );
+    it != seen.end( ); ++it ) {
+      if ( it->second < 2 )
+          this->at( it->first.first ).push_back( it->first.second );
+  }
 }
 
 /* ---------------------------------------------------------------- */

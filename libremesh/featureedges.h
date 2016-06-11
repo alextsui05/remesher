@@ -29,6 +29,8 @@ struct FeatureEdgesConf
   float angle_theta;
   float angle_phi;
 
+  bool extract_border;
+
   FeatureEdgesConf (void);
 };
 
@@ -80,6 +82,7 @@ class FeatureEdges : public std::vector<FeatureVertexEdges>
     /* Feature information. */
     bool is_feature_edge (std::size_t index1, std::size_t index2) const;
     void add_feature_edge (std::size_t index1, std::size_t index2);
+    void add_border_edges ();
     bool rm_feature_edge (std::size_t index1, std::size_t index2);
 
     FeatureVertexEdges get_edges_for_vertex (std::size_t index) const;
@@ -90,7 +93,7 @@ class FeatureEdges : public std::vector<FeatureVertexEdges>
 
     /* Fixes feature information if vertex indices have been changed. */
     void fix_index_relocation (FeatureEdges::RelocList const& reloc);
-    
+
     /* Returns the approximate amount of memory used. */
     std::size_t get_memory_usage (void) const;
 

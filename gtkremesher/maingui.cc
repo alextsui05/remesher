@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 #include <gtkmm/main.h>
 #include <gtkmm/notebook.h>
@@ -615,16 +616,19 @@ MainGui::on_mesh_save_request (bool reference)
 {
   char const* wintitle = 0;
   Remesher::TriangleMeshPtr mesh;
+  Remesher::FeatureEdgesPtr features;
 
   if (reference)
   {
     wintitle = "Save reference mesh...";
     mesh = this->iface.get_reference_mesh();
+    features = this->iface.get_reference_features();
   }
   else
   {
     wintitle = "Save evolving mesh...";
     mesh = this->iface.get_evolving_mesh();
+    features = this->iface.get_evolving_features();
   }
 
   if (mesh.get() == 0 || mesh->get_vertices().empty())
@@ -717,6 +721,12 @@ MainGui::on_mesh_save_request (bool reference)
   try
   {
     Remesher::ModelWriter::save_model(filename, mesh);
+    std::ofstream ofs( "/tmp/out.features" );
+    for ( int i = 0; i < features->size( ); ++i ) {
+      for ( int j = 0; j < features[i].size(); ++j ) {
+        ofs << i << " " << features[i][j] << "\n";
+      }
+    }
   }
   catch (Remesher::Exception& e)
   {
