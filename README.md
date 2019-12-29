@@ -79,12 +79,12 @@ and important information. Observe the output!
 
  - Conversion
    - The original mesh is converted to an initial remesh (evolving mesh).
-     This can be done using either a simiplification or resampling.
+     This can be done using either a simplification or resampling.
    - During resampling, some error messages may appear in the console.
      Most errors can be ignored and are just for debugging purposes.
 
  - Remeshing
-   - The initial remesh can be imporoved using Lloyd relaxation.
+   - The initial remesh can be improved using Lloyd relaxation.
    - Area equalization is also implemented but is unstable
      and can lead to flipped or invalid triangles.
    - During remeshing, some error messages may appear in the console.
